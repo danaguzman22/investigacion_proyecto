@@ -45,7 +45,7 @@ Respondé ÚNICAMENTE con el bloque Markdown listo para agregar a la bitácora.
 
 # 5. Consulta a la API de Gemini
 # Cambiá gemini-2.5-flash por gemini-1.5-flash:
-url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={api_key}"
+url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={api_key}"
 payload = {
     "contents": [{"parts": [{"text": prompt}]}]
 }
