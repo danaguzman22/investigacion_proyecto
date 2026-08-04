@@ -24,7 +24,7 @@ jobs:
       - name: Ejecutar Agente de IA
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: python scripts/summarize.py
+        run: python script/summarize.py
 
       - name: Guardar cambios en el repositorio
         uses: stefanzweifel/git-auto-commit-action@v5
