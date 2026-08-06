@@ -4,13 +4,13 @@ import subprocess
 import urllib.request
 from datetime import datetime
 
-# 1. Obtener el Token automático de GitHub
-token = os.environ.get("GITHUB_TOKEN")
-if not token:
-    print("Error: GITHUB_TOKEN no configurada.")
+# 1. Obtener la API Key de Groq
+api_key = os.environ.get("GROQ_API_KEY")
+if not api_key:
+    print("Error: GROQ_API_KEY no configurada.")
     exit(1)
 
-# 2. Obtener el último commit y autor
+# 2. Obtener commit y cambios
 try:
     commit_msg = subprocess.check_output(
         ["git", "log", "-1", "--pretty=format:%s"]
@@ -29,11 +29,11 @@ except Exception:
 if len(git_diff) > 1000:
     git_diff = git_diff[:1000] + "\n...[diff truncado]"
 
-# 3. Consultar a GitHub Models (GPT-4o-mini)
-url = "https://models.inference.ai.azure.com/chat/completions?api-version=2024-05-01-preview"
+# 3. Consulta a Groq API (Llama 3.3)
+url = "https://api.groq.com/openai/v1/chat/completions"
 headers = {
     "Content-Type": "application/json",
-    "Authorization": f"Bearer {token}",
+    "Authorization": f"Bearer {api_key}",
 }
 
 prompt = (
@@ -43,7 +43,7 @@ prompt = (
 
 payload = {
     "messages": [{"role": "user", "content": prompt}],
-    "model": "gpt-4o-mini",
+    "model": "llama-3.3-70b-versatile",
 }
 
 req = urllib.request.Request(

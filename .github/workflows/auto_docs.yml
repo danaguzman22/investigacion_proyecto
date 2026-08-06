@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write  # Otorga permisos para editar y guardar el archivo en el repo
+
     steps:
       - name: Descargar repositorio
         uses: actions/checkout@v4
@@ -23,7 +24,7 @@ jobs:
 
       - name: Ejecutar Agente de IA
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: python script/summarize.py
 
       - name: Guardar cambios en el repositorio
