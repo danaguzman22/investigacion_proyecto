@@ -30,7 +30,7 @@ if len(git_diff) > 1000:
     git_diff = git_diff[:1000] + "\n...[diff truncado]"
 
 # 3. Consultar a GitHub Models (GPT-4o-mini)
-url = "https://models.inference.ai.azure.com/chat/completions"
+url = "https://models.inference.ai.azure.com/chat/completions?api-version=2024-05-01-preview"
 headers = {
     "Content-Type": "application/json",
     "Authorization": f"Bearer {token}",
