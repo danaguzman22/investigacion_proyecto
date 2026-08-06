@@ -22,3 +22,9 @@ Se ha ajustado la configuración de zona horaria en el flujo de trabajo de GitHu
 Se ha integrado el componente de inteligencia artificial (IA) con la descripción de ClickUp en el flujo de trabajo de GitHub, lo que incluye la adición de una clave de API de ClickUp en el archivo `auto_docs.yml` y la implementación de cambios en el script `summarize.py` para compatibilidad con esta integración. Estos cambios permiten una mejor automatización y generación de documentos con la información obtenida desde ClickUp.
 
 ---
+### [2026-08-06 01:19:01] - fix(script): ajustar regex para detectar prefijo CU #CU-wdxg9fd90h [Finalizados]
+**Autor:** danaguzman22
+
+Se ha corregido el script de resumen para adecuar la expresión regular y mejorar la detección de prefijos "CU" en mensajes de commit, lo que permite una mejor integración con ClickUp. El ajuste incluye una expresión regular que busca cadenas alfanuméricas de 8 a 10 caracteres precedidas opcionalmente por "#", "CU-" o ninguna de las anteriores, de manera case-insensitive.
+
+---
