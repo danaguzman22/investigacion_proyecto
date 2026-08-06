@@ -25,6 +25,7 @@ jobs:
       - name: Ejecutar Agente de IA
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          TZ: "America/Argentina/Buenos_Aires"
         run: python script/summarize.py
 
       - name: Guardar cambios en el repositorio
