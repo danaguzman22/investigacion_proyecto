@@ -1,79 +1,73 @@
+import json
 import os
 import subprocess
 import urllib.request
-import json
 from datetime import datetime
 
-# 1. Obtener la API Key
-api_key = os.environ.get("GEMINI_API_KEY")
-if not api_key:
-    print("Error: GEMINI_API_KEY no configurada.")
+# 1. Obtener el Token automático de GitHub
+token = os.environ.get("GITHUB_TOKEN")
+if not token:
+    print("Error: GITHUB_TOKEN no configurada.")
     exit(1)
 
 # 2. Obtener el último commit y autor
-commit_msg = subprocess.check_output(["git", "log", "-1", "--pretty=format:%s"]).decode("utf-8")
-commit_author = subprocess.check_output(["git", "log", "-1", "--pretty=format:%an"]).decode("utf-8")
-
-# 3. Obtener el diff de los cambios
 try:
-    git_diff = subprocess.check_output(["git", "diff", "HEAD~1", "HEAD"]).decode("utf-8", errors="ignore")
+    commit_msg = subprocess.check_output(
+        ["git", "log", "-1", "--pretty=format:%s"]
+    ).decode("utf-8")
+    commit_author = subprocess.check_output(
+        ["git", "log", "-1", "--pretty=format:%an"]
+    ).decode("utf-8")
+    git_diff = subprocess.check_output(
+        ["git", "diff", "HEAD~1", "HEAD"]
+    ).decode("utf-8")
 except Exception:
-    git_diff = "Nuevos archivos o cambios generales agregados."
+    commit_msg = "Actualización de archivos"
+    commit_author = "Colaborador"
+    git_diff = "Cambios generales en el proyecto."
 
-# Limitar tamaño de diff para evitar excesos
-if len(git_diff) > 4000:
-    git_diff = git_diff[:4000] + "\n...[diff truncado]"
+if len(git_diff) > 1000:
+    git_diff = git_diff[:1000] + "\n...[diff truncado]"
 
-# 4. Armar el Prompt para la IA
-prompt = f"""
-Sos un Agente Técnico de Documentación para el proyecto de investigación de Juego de Roles.
-Analizá los siguientes cambios realizados en el repositorio y redactá una entrada de bitácora profesional, clara y sintética en español.
+# 3. Consultar a GitHub Models (GPT-4o-mini)
+url = "https://models.inference.ai.azure.com/chat/completions"
+headers = {
+    "Content-Type": "application/json",
+    "Authorization": f"Bearer {token}",
+}
 
-Detalles del commit:
-- Mensaje: {commit_msg}
-- Autor: {commit_author}
-- Cambios realizados (git diff):
-{git_diff}
+prompt = (
+    "Genera un resumen técnico ultra corto (máximo 2 oraciones) en español para una bitácora de desarrollo. "
+    f"Autor: {commit_author}\nMensaje de commit: {commit_msg}\nCambios:\n{git_diff}"
+)
 
-Formato requerido (en Markdown):
-- Un título representativo del avance.
-- Un resumen ejecutivo (2 o 3 oraciones) de lo que se avanzó o investigó.
-- Viñetas con los puntos técnicos/funcionales más destacados.
-
-Respondé ÚNICAMENTE con el bloque Markdown listo para agregar a la bitácora.
-"""
-
-# 5. Consulta a la API de Gemini
-# Cambiá gemini-2.5-flash por gemini-1.5-flash:
-url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={api_key}"
 payload = {
-    "contents": [{"parts": [{"text": prompt}]}]
+    "messages": [{"role": "user", "content": prompt}],
+    "model": "gpt-4o-mini",
 }
 
 req = urllib.request.Request(
-    url, 
-    data=json.dumps(payload).encode("utf-8"), 
-    headers={"Content-Type": "application/json"}
+    url, data=json.dumps(payload).encode("utf-8"), headers=headers, method="POST"
 )
 
 try:
     with urllib.request.urlopen(req) as response:
         result = json.loads(response.read().decode("utf-8"))
-        summary = result["candidates"][0]["content"]["parts"][0]["text"]
+        resumen = result["choices"][0]["message"]["content"].strip()
 except Exception as e:
-    print(f"Error consultando a Gemini: {e}")
+    print(f"Error consultando la IA: {e}")
     exit(1)
 
-# 6. Actualizar el archivo BITACORA.md
-fecha_actual = datetime.now().strftime("%Y-%m-%d %H:%M")
-nueva_entrada = f"\n\n### 📝 Registro del {fecha_actual}\n**Contribuidor:** {commit_author}\n\n{summary}\n\n---"
+# 4. Escribir en BITACORA.md
+fecha = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+entrada = (
+    f"### [{fecha}] - {commit_msg}\n**Autor:** {commit_author}\n\n{resumen}\n\n---\n"
+)
 
-bitacora_path = "BITACORA.md"
-if not os.path.exists(bitacora_path):
-    with open(bitacora_path, "w", encoding="utf-8") as f:
-        f.write("# 📑 Bitácora de Investigación y Desarrollo\n*Actualizada automáticamente por el Agente de IA*\n\n---")
-
-with open(bitacora_path, "a", encoding="utf-8") as f:
-    f.write(nueva_entrada)
-
-print("Bitácora actualizada correctamente por la IA.")
+try:
+    with open("BITACORA.md", "a", encoding="utf-8") as f:
+        f.write(entrada)
+    print("BITACORA.md actualizada exitosamente.")
+except Exception as e:
+    print(f"Error al escribir en BITACORA.md: {e}")
+    exit(1)

@@ -23,7 +23,7 @@ jobs:
 
       - name: Ejecutar Agente de IA
         env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python script/summarize.py
 
       - name: Guardar cambios en el repositorio
