@@ -16,3 +16,9 @@ Se realizó la depuración del repositorio, eliminando archivos de prueba innece
 Se ha ajustado la configuración de zona horaria en el flujo de trabajo de GitHub para coincidir con la hora de Argentina (UTC-3), mediante la adición de la variable de entorno `TZ` en el archivo `auto_docs.yml`. Esto se logró mediante un commit que modifica el archivo `.github/workflows/auto_docs.yml` para incluir la línea `TZ: "America/Argentina/Buenos_Aires"`.
 
 ---
+### [2026-08-06 01:12:04] - feat(ia): integración de IA con descripción de ClickUp #wdxg9fd90h [Finalizada]
+**Autor:** danaguzman22
+
+Se ha integrado el componente de inteligencia artificial (IA) con la descripción de ClickUp en el flujo de trabajo de GitHub, lo que incluye la adición de una clave de API de ClickUp en el archivo `auto_docs.yml` y la implementación de cambios en el script `summarize.py` para compatibilidad con esta integración. Estos cambios permiten una mejor automatización y generación de documentos con la información obtenida desde ClickUp.
+
+---
