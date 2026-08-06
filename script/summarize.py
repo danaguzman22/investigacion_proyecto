@@ -80,7 +80,7 @@ except Exception as e:
     exit(1)
 
 # 5. Actualizar la Descripción en ClickUp (si hay ID en el commit)
-match = re.search(r"#([a-zA-Z0-9]+)", commit_msg)
+match = re.search(r"(?:#|CU-)*([a-zA-Z0-9]{8,10})", commit_msg, re.IGNORECASE)
 if match and clickup_key:
     task_id = match.group(1)
     url_clickup = f"https://api.clickup.com/api/v2/task/{task_id}"
