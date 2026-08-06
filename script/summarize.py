@@ -31,9 +31,11 @@ if len(git_diff) > 1000:
 
 # 3. Consulta a Groq API (Llama 3.3)
 url = "https://api.groq.com/openai/v1/chat/completions"
+# Modificá la sección de headers para que quede así:
 headers = {
     "Content-Type": "application/json",
     "Authorization": f"Bearer {api_key}",
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
 }
 
 prompt = (
