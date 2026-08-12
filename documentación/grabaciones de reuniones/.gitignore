@@ -1,0 +1,21 @@
+# Los audios y videos no se versionan.
+#
+# Este repositorio es publico y compartido: cada archivo de audio queda para
+# siempre en el historial, lo descarga todo el equipo en cada clon, y publica
+# las voces de la reunion. Al repo va solo la transcripcion en texto.
+#
+# Los audios se guardan en el OneDrive del proyecto:
+#   OneDrive - frsr.utn.edu.ar\AA INDUSTRIAL\Gamificacion\Avance reuiniones\
+#
+# Nota: reunion_120826.m4a quedo versionado antes de esta regla y sigue en el
+# historial. Git no deja de seguir un archivo ya versionado por agregarlo aca.
+
+*.m4a
+*.mp3
+*.wav
+*.ogg
+*.aac
+*.flac
+*.mp4
+*.mov
+*.mkv

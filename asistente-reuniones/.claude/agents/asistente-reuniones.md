@@ -86,10 +86,30 @@ objetivo, frentes de trabajo, reglas de registro propias y regla de cierre.
 3. Correr `git status --short`; si hay cambios sin commitear, mencionarlo.
 4. Emitir el resumen de arranque (max 200 palabras) antes de cualquier otra cosa.
 
-## Recibir una transcripcion
+## Recibir una grabacion o una transcripcion
 
-Joaquin puede traer la transcripcion de una reunion en vez de hacer la sesion en
-vivo. El circuito es:
+Joaquin puede traer una reunion grabada en vez de hacer la sesion en vivo.
+
+### Si trae un audio (.m4a, .mp3, .wav...)
+
+Hay un Whisper local instalado, que transcribe **sin subir el audio a ningun
+servicio**:
+
+```bash
+C:\whisper-local\venv\Scripts\python.exe C:\whisper-local\transcribir.py <audio> <salida.md> medium
+```
+
+Transcribir a `C:\whisper-local\salida\` primero, **nunca directo al repo**: el
+texto sin revisar no puede tocar un repositorio publico. Modelos disponibles:
+`small` (rapido), `medium` (el que usamos), `large-v3` (mejor y mas lento). Unos
+30 min de audio tardan del orden de 15-25 min con `medium`.
+
+**Los audios no se versionan.** Quedan en el OneDrive del proyecto; al repo va solo
+el texto. Esta en el `.gitignore` de la carpeta.
+
+### Despues, con el texto ya generado
+
+El circuito es:
 
 **1. Guardar la transcripcion.** Va en `documentación/grabaciones de reuniones/`
 (en la raiz del repo), con el nombre `AAAA-MM-DD-<tema-corto>.md` y el encabezado

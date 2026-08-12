@@ -4,6 +4,24 @@ Transcripciones de las reuniones del equipo de investigacion. Son la **fuente** 
 la que salen las conclusiones, los pendientes y los indicadores que estan en
 `asistente-reuniones/proyecto-gamificacion/`.
 
+## Aca va texto, no audio
+
+Los archivos de audio y video **no se versionan** (ver `.gitignore`). El repo es
+publico y compartido: un audio queda para siempre en el historial, lo descarga todo
+el equipo en cada clon, y publica las voces de la reunion.
+
+Los audios se guardan en el OneDrive del proyecto:
+`OneDrive - frsr.utn.edu.ar\AA INDUSTRIAL\Gamificacion\Avance reuiniones\`
+
+**Como se transcribe:** hay un Whisper local instalado en `C:\whisper-local`
+(en la maquina de Joaquin). Transcribe sin subir el audio a ningun servicio:
+
+```
+C:\whisper-local\venv\Scripts\python.exe C:\whisper-local\transcribir.py <audio> <salida.md> medium
+```
+
+El asistente lo corre solo cuando le pasas un audio.
+
 ## Como se nombran los archivos
 
 ```
