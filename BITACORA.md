@@ -46,3 +46,9 @@ Se ha implementado la funcionalidad para recibir transcripciones de reuniones en
 Se agregó un nuevo archivo de audio, "reunion_120826.m4a", a la carpeta de grabaciones de reuniones dentro de la documentación. Este archivo corresponde a la reunión del 12/08 y se encuentra disponible para su revisión y consulta.
 
 ---
+### [2026-08-12 16:21:54] - feat(documentacion): transcripciones en texto, audios fuera del repo
+**Autor:** Joaquin Paz Cabus
+
+Se ha agregado la funcionalidad para recibir grabaciones de reuniones en lugar de sesiones en vivo, permitiendo la transcripción local de audios sin subirlos a servicios externos. Los cambios incluyen la actualización del archivo `asistente-reuniones.md` para reflejar esta nueva funcionalidad y los pasos para transcribir audios de forma local.
+
+---
