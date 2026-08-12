@@ -52,3 +52,9 @@ Se agregó un nuevo archivo de audio, "reunion_120826.m4a", a la carpeta de grab
 Se ha agregado la funcionalidad para recibir grabaciones de reuniones en lugar de sesiones en vivo, permitiendo la transcripción local de audios sin subirlos a servicios externos. Los cambios incluyen la actualización del archivo `asistente-reuniones.md` para reflejar esta nueva funcionalidad y los pasos para transcribir audios de forma local.
 
 ---
+### [2026-08-12 16:36:10] - docs(grabaciones): como grabar para que se pueda transcribir
+**Autor:** Joaquin Paz Cabus
+
+Se ha actualizado la documentación de grabaciones de reuniones con recomendaciones prácticas para grabar audio con el fin de facilitar su transcripción, enfatizando la importancia de capturar frecuencias entre 1000 y 4000 Hz. Se agregó una sección "Como grabar para que se pueda transcribir" en el archivo README.md dentro de la carpeta de documentación de grabaciones de reuniones.
+
+---
