@@ -22,6 +22,31 @@ C:\whisper-local\venv\Scripts\python.exe C:\whisper-local\transcribir.py <audio>
 
 El asistente lo corre solo cuando le pasas un audio.
 
+## Como grabar para que se pueda transcribir
+
+Aprendido a la mala con `reunion_120826.m4a`, que quedo intranscribible.
+
+El habla se entiende gracias a las frecuencias de **1000 a 4000 Hz**: ahi viven las
+consonantes. Si el microfono queda tapado o lejos, esas frecuencias se pierden y
+queda solo el retumbe grave de las voces. Ningun transcriptor puede recuperarlas,
+porque la informacion no quedo grabada.
+
+Reglas practicas:
+
+- **Telefono sobre la mesa, boca arriba y destapado.** No en un bolsillo, ni en una
+  mochila, ni debajo de papeles.
+- **En el centro de la mesa**, no delante de una sola persona.
+- **Grabar con la app de la reunion** si es virtual (Meet, Zoom, Teams): toman el
+  audio directo de cada microfono y ademas suelen dar la transcripcion hecha.
+- **Probar 30 segundos antes de empezar** y escucharlos. Si se entienden las
+  palabras, la grabacion sirve. Si se escucha un murmullo sordo, no.
+
+Como verificar una grabacion antes de darla por buena:
+
+```
+C:\whisper-local\venv312\Scripts\python.exe C:\whisper-local\verificar_audio.py <archivo>
+```
+
 ## Como se nombran los archivos
 
 ```
