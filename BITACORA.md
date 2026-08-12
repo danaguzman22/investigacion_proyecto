@@ -34,3 +34,9 @@ Se ha corregido el script de resumen para adecuar la expresión regular y mejora
 Se incorporó el asistente de reuniones del proyecto en la documentación, que gestiona reuniones de proyecto y automatiza tareas como la apertura y cierre de sesiones, captura de conclusiones y pendientes, y actualización de registros. El asistente utiliza herramientas como Read, Write, Edit, Glob, Grep y Bash para realizar estas tareas de manera eficiente.
 
 ---
+### [2026-08-12 16:04:06] - feat(documentacion): carpeta de transcripciones de reuniones
+**Autor:** Joaquin Paz Cabus
+
+Se ha implementado la funcionalidad para recibir transcripciones de reuniones en lugar de realizar sesiones en vivo, creando una carpeta "documentación/grabaciones de reuniones/" para almacenarlas con un formato de archivo específico. Esta característica permite a Joaquin agregar transcripciones de reuniones siguiendo un proceso establecido para su guarda y revisión.
+
+---
