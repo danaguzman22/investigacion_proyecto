@@ -28,3 +28,9 @@ Se ha integrado el componente de inteligencia artificial (IA) con la descripció
 Se ha corregido el script de resumen para adecuar la expresión regular y mejorar la detección de prefijos "CU" en mensajes de commit, lo que permite una mejor integración con ClickUp. El ajuste incluye una expresión regular que busca cadenas alfanuméricas de 8 a 10 caracteres precedidas opcionalmente por "#", "CU-" o ninguna de las anteriores, de manera case-insensitive.
 
 ---
+### [2026-08-12 15:58:38] - docs(reuniones): incorpora el asistente de reuniones del proyecto
+**Autor:** Joaquin Paz Cabus
+
+Se incorporó el asistente de reuniones del proyecto en la documentación, que gestiona reuniones de proyecto y automatiza tareas como la apertura y cierre de sesiones, captura de conclusiones y pendientes, y actualización de registros. El asistente utiliza herramientas como Read, Write, Edit, Glob, Grep y Bash para realizar estas tareas de manera eficiente.
+
+---
