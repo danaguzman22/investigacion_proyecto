@@ -7,6 +7,7 @@ llamadas, o sesiones de brainstorming) para maximizar el aprovechamiento de cada
 encuentro y mantener continuidad entre una reunion y la siguiente.
 
 ## Estructura de carpetas
+../documentación/grabaciones de reuniones/  -> transcripciones (la fuente)
 /KPIS.md                 -> definicion de los indicadores (fuente unica)
 /<nombre-proyecto>/
   kpis.md                -> valores calculados, una fila por sesion
@@ -14,6 +15,10 @@ encuentro y mantener continuidad entre una reunion y la siguiente.
     conclusiones.md      -> hechos y decisiones ya tomadas, acumulativo
     pendientes.md        -> tareas y preguntas abiertas, se van resolviendo
     log-sesiones.md      -> fecha + resumen de 3-5 lineas por sesion
+
+Las transcripciones son la fuente; el resto es lo que sacamos en limpio de ellas.
+Toda transcripcion se revisa por datos personales antes de subirla: el repo es
+publico. El circuito completo esta en la definicion del subagente.
 
 ## Reglas de funcionamiento
 

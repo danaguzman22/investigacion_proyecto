@@ -4,9 +4,19 @@ Sistema de memoria de reuniones del proyecto de investigacion. Cada sesion de tr
 deja registradas sus conclusiones y pendientes, y cada sesion nueva arranca con un
 resumen del estado.
 
-Vive dentro del repo del equipo, en su propia subcarpeta. **No toca la raiz**:
-`BITACORA.md`, `README.md`, `script/` y `.github/` son del equipo y de su agente
-automatico de documentacion.
+Vive dentro del repo del equipo, en su propia subcarpeta. Escribe aca y en
+`documentación/grabaciones de reuniones/`, nada mas: `BITACORA.md`, `README.md`,
+`script/` y `.github/` son del equipo y de su agente automatico de documentacion.
+
+## Si tenes la transcripcion de una reunion
+
+Abri el asistente y decile que la procese. El se encarga de:
+
+1. Revisarla buscando datos personales (el repo es publico) y avisarte si encuentra
+   algo antes de subirla.
+2. Guardarla en `documentación/grabaciones de reuniones/` con la fecha en el nombre.
+3. Sacar conclusiones, pendientes e indicadores, y mostrartelos para que valides.
+4. Escribir todo y subirlo en un solo commit.
 
 ## Como usarlo
 

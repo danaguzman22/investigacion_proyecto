@@ -86,6 +86,48 @@ objetivo, frentes de trabajo, reglas de registro propias y regla de cierre.
 3. Correr `git status --short`; si hay cambios sin commitear, mencionarlo.
 4. Emitir el resumen de arranque (max 200 palabras) antes de cualquier otra cosa.
 
+## Recibir una transcripcion
+
+Joaquin puede traer la transcripcion de una reunion en vez de hacer la sesion en
+vivo. El circuito es:
+
+**1. Guardar la transcripcion.** Va en `documentación/grabaciones de reuniones/`
+(en la raiz del repo), con el nombre `AAAA-MM-DD-<tema-corto>.md` y el encabezado
+que describe el README de esa carpeta. Es el unico lugar de la raiz que este agente
+toca.
+
+**2. Revisar datos personales ANTES de guardarla.** El repo es publico. Recorrer la
+transcripcion buscando nombres, legajos, mails o telefonos de estudiantes o
+participantes del piloto, resultados individuales identificables, datos sensibles de
+terceros, credenciales, y comentarios sobre personas ausentes.
+
+- Si aparece algo: **no guardarla todavia**. Mostrarle a Joaquin la lista de lo que
+  encontraste, con la linea donde esta, y proponer el reemplazo por rol o inicial
+  ("Estudiante 1", "la docente de la catedra"). El decide.
+- Los nombres de los integrantes del equipo pueden quedar.
+- Ante la duda, preguntar. Es mas barato preguntar que despublicar.
+
+**3. Procesar el contenido** con los mismos criterios de siempre: separar CONCLUSION
+de PENDIENTE de ruido, anclar cada conclusion a la hipotesis o etapa que toca,
+separar HALLAZGO de INTERPRETACION, y distinguir decision de equipo de sugerencia
+individual. Ver `CLAUDE-proyecto.md` del proyecto.
+
+En una transcripcion esto ultimo es lo mas facil de equivocar: alguien tira una idea,
+nadie la confirma, y no es una decision. **Si no quedo claro que el equipo cerro
+algo, va como pendiente, no como conclusion.**
+
+**4. Mostrar lo extraido antes de escribir nada.** Que Joaquin valide la
+clasificacion. Recien despues escribir en `conclusiones.md`, `pendientes.md`,
+`log-sesiones.md` y `kpis.md`.
+
+**5. Marcar `Procesada: si`** en el encabezado de la transcripcion, para no
+procesarla dos veces.
+
+**6. Commitear todo junto** — la transcripcion y lo extraido — en un solo commit.
+
+Si la transcripcion no dice la duracion, la cantidad de participantes o los votos de
+ROTI, preguntarlos. No inferirlos del texto.
+
 ## Durante la sesion
 
 - Ir clasificando lo que se dice en CONCLUSION / PENDIENTE / ruido (el ruido no se
@@ -158,7 +200,8 @@ Cada push a `main` dispara una GitHub Action que resume el commit con IA y lo ag
 a `BITACORA.md`, ademas de leer IDs de tarea de ClickUp del mensaje. Consecuencias:
 
 - **No tocar** `BITACORA.md`, `README.md`, `script/` ni `.github/` en la raiz: son
-  del equipo y de su automatizacion. Trabajar solo dentro de `asistente-reuniones/`.
+  del equipo y de su automatizacion. Este agente escribe en dos lugares y nada mas:
+  `asistente-reuniones/` y `documentación/grabaciones de reuniones/`.
 - El mensaje de commit va a terminar publicado en la bitacora del equipo. Escribirlo
   para esa audiencia.
 - Si el equipo usa un ID de ClickUp para la tarea, incluirlo en el mensaje.
